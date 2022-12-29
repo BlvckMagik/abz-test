@@ -8,7 +8,7 @@ import {
   StyledEngineProvider,
 } from "@mui/material/styles";
 
-import { palette, typography } from "./theme/index";
+import { palette, breakpoints, typography, overrides } from "./theme/index";
 
 type Args = {
   children: ReactElement;
@@ -19,14 +19,15 @@ const ThemeProvider = (args: Args) => {
 
   const themeOptions = useMemo(
     () => ({
-      ...palette,
-      ...typography,
+      palette,
+      typography,
+      breakpoints,
     }),
     []
   );
 
   const theme = createTheme(themeOptions as any);
-  //   theme.components = componentsOverride(theme);
+  theme.components = overrides as any;
 
   return (
     <StyledEngineProvider injectFirst>

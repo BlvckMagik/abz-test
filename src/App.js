@@ -1,12 +1,17 @@
+import { Provider } from "react-redux";
 import ThemeProvider from "./ui-theme";
+import Page from "./components/Page";
+import store from "./store";
 
 import "./App.css";
 
 function App() {
   return (
-    <ThemeProvider>
-      <div className="App">lorem ipsum</div>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider>
+        <Page />
+      </ThemeProvider>
+    </Provider>
   );
 }
 
